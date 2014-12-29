@@ -1,0 +1,17 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces Notional diagram of podded vs. BLI engine design}}{5}
+\contentsline {figure}{\numberline {2}{\ignorespaces Boundary layer ingestion system study estimates}}{18}
+\contentsline {figure}{\numberline {3}{\ignorespaces Notional cycle analysis for a BLI propulsion system. Boxes outlined in red show the components which need modification for BLI.}}{20}
+\contentsline {figure}{\numberline {4}{\ignorespaces Notional figure of a boundary layer growing on a flat plate in an aerodynamic flow.}}{21}
+\contentsline {figure}{\numberline {5}{\ignorespaces Control volume of a notional hybrid wing body with embedded engines.}}{25}
+\contentsline {figure}{\numberline {6}{\ignorespaces Propulsive efficiency vs. normalized jet velocity for different values of \cite {Plas2007}.}}{29}
+\contentsline {figure}{\numberline {7}{\ignorespaces Boundary layers profiles based on the Boeing HWB design and CFD analysis. Plot of height above the airframe vs. axial Mach number. \cite {Fedler2011}}}{31}
+\contentsline {figure}{\numberline {8}{\ignorespaces Plot of Mach number, displacement, momentum, and kinetic energy defects vs. the axial length along the HWB centerline based on the Boeing CFD data.}}{31}
+\contentsline {figure}{\numberline {9}{\ignorespaces Notional picture of the regions of the flow field before the fan face.}}{33}
+\contentsline {figure}{\numberline {10}{\ignorespaces Mass averaged total pressure and temperature prior to the pre-compression region for the Boeing HWB design.}}{34}
+\contentsline {figure}{\numberline {11}{\ignorespaces Illustration of the parallel compressor model on a notional fan map.}}{37}
+\contentsline {figure}{\numberline {12}{\ignorespaces Typical circumeferential distortion distribution for a single-per-rev type distortion profile at the $i_{th}$ radial ring.}}{38}
+\contentsline {figure}{\numberline {13}{\ignorespaces Notional inlet diagrams showing different conditions for which there are high inlet incidence angles \cite {Oates1989}}}{43}
+\contentsline {figure}{\numberline {14}{\ignorespaces Notional inlet incidence angle requirements vs. freestream Mach number \cite {Oates1989}}}{44}
+\contentsline {figure}{\numberline {15}{\ignorespaces Simultaneous multi-design point cycle analysis equation setup \cite {SchutteThesis}}}{46}
+\contentsline {figure}{\numberline {16}{\ignorespaces Sensitivity of fuel burn due to variation in the inlet total pressure recovery. Data taken from BLI augmented cycle analysis.}}{48}
+\contentsline {figure}{\numberline {17}{\ignorespaces Notional probability distribution for BLI fuel burn benefit.}}{49}
