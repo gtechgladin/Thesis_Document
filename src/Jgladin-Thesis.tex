@@ -619,48 +619,12 @@ Observation 11:  Subsonic inlets are constrained by incidence requirements to ma
   }
 }
 
-\section{Propulsion System Uncertainty and Risk Modeling}
-\indent For conceptual engine designers, BLI proposes a set of new challenges because it creates a coupling with airframe aerodynamics and installed performance -- information they simply may not have at the conceptual level given the lack of historical data.  Furthermore, they now have to consider the impact of distortion on the performance and stability of the compression system.  Therefore, any conceptual level assessment must of necessity be probabilistic, since uncertainty will be increased due to these factors.  It is therefore necessary to consider the uncertainty in the assumptions made when translating design parameters into the fuel burn metric.  Instead of assuming a single value for inlet recovery, for instance, it may be better to assume a range of values for those impacts for input to the cycle model, and thereby determine at which point the system loses viability.  This would provide targets for the component designers who may then determine the possibility of meeting such targets given real world constraints and technology.  Hardin et. al discussed these issues and performed a trade-factor-based system study by varying the inlet recovery and fan efficiency parametrically to determine the sensitivities of the cycle model to these inputs.  Figure \ref{Inlet_Sensitivity} shows the sensitivity of fuel burn to the inlet recovery for a geared turbofan powered HWB aircraft.  This data was taken from a simple cycle model with notional BLI inlets representing this configuration.  Though these models are simple, the results show that the inlet recovery has a very strong effect on the final fuel burn.  
-	%%
-	\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=110mm, height =70mm, clip=true, trim = 1mm 1mm 1mm 1mm]{Inlet_Sensitivity.png}
-	\caption{Sensitivity of fuel burn due to variation in the inlet total pressure recovery.  Data taken from BLI augmented cycle analysis.}
-	\label{Inlet_Sensitivity}
-	\end{figure}
-	%%
-
-This might explain the conclusion of Rodriguez, whose optimization algorithm yielded a negative BLI benefit relative to the podded case, since the inlet recoveries in that study were quite low relative to modern podded configurations.  Recent optimization studies have shown that much higher recoveries are possible \cite{Liou2012} \cite{Florea2012}, although the domain of the computation was lower than Rodriguez.  In any case, the point still remains that uncertainty is inherent in the initial cycle analysis until such data becomes available.  Every estimate should then be considered as a probability distribution as shown in figure \ref{density_function} and in this way one can consider the risk in any design decision.  The dashed line represents the fuel burn target, the gray area represents the probability of meeting the target and the white remaining area represents the probability of not meeting the target for a given design.
-	%%
-	\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=110mm, height =70mm, clip=true, trim = 1mm 1mm 1mm 1mm]{Fuel_Burn_PDF.png}
-	\caption{Notional probability distribution for BLI fuel burn benefit.}
-	\label{density_function}
-	\end{figure}
-	%%
-
-\indent Though the approach of Hardin presents a good first pass at understanding the relative impacts of the assumptions, part of the problem is that the parameters of the model (e.g. inlet recovery and fan efficiency) are correlated.  A very low inlet recovery and a very high fan efficiency are thus quite unlikely to occur simultaneously, given that the fan efficiency loss results from the same flow distortion which produces the lower inlet pressure recovery.  This provides motivation for creating better physics based models, such as the parallel compressor model which can link these parameters.  However, even with this kind of model there is still a fidelity problem and some uncertainty in relation to the actual value of the final design.  It is therefore desirable to create parametric models so that they can either be calibrated existing data or included in a parametric sensitivity analysis.  As new data is produced from higher order analyses or physical experiments, the performance models can be updated and should, in theory, squeeze the probability boundaries.  
-
-\subsection{Observations}
-\vspace{25pt}
-
-\fbox{
-  \parbox{\textwidth}{
-Observation 12:  The assumptions about BLI component performance (e.g. inlet, fan, nacelle drag, etc.) have a strong impact on the final fuel burn analysis.
-\vspace{5 mm}
-	
-Observation 13:  Because of the physical coupling between the components, the component efficiency assumptions are correlated and are functions of flight conditions and engine ingested mass flow.
-\vspace{5 mm}
-
-  }
-}
-
 \chapter{A General Method for BLI Propulsion System Design, Integration, and Analysis}
-
-\chapter{BLI Modeling Phase}
-\section{Introduction}
-
+\section{Methodology Development}
+\subsection{MDP Cycle Analysis}
+\subsection{Requirements for a BLI Sizing Method}
+\subsection{Methodology and Justification}
+\section{BLI Modeling Phase}
 The history of the analysis of boundary layer ingesting engines, much as the history of any analysis, is littered with varying levels of modeling fidelity and assumptions with often quite disparate results INSERT REFERENCE HERE.  The complicated nature of the question -- viscous and turbulent airframe-propulsion interaction -- often lends itself to convenient simplications for the sake of expediency in order to draw some initial conclusion about potential net benefits and viable configurations.  Once such decisions have been made, engineers are free to move on to the difficult work of determining the validity of the assumptions and analysis via higher order toolsets such as modern Navier-Stokes codes and the like.  This is all very typical of a usual design process, in which conceptual design begins with some crude assumption and is refined by later analysis and optimization.  However, the point of this thesis is to try to get closer to a feasible answer -- at least for the basic propulsion system cycle design and sizing -- before the aerodynamicists embark on refining the assumptions that went into making that decision.  Furthermore, it is intended to guide the aerodynamicist and experimentalist in appropriately directing finite resources for their efforts in the most productive directions (correct flight conditions, configurations, initial geometry, etc), and providing sufficient data back to the propulsion engineer in an iterative process which eventually converges on a solution.  It is with this basic project in mind that research question 1 is formulated and stated simply as follows:
 \vspace{25pt}
 \vspace{5mm}
@@ -680,9 +644,8 @@ The component of the question which is far more interesting, however, is in quan
 
 The analysis will also be separated into two different operational modes: engine on-design and off-design.  On-design is the analysis which typically sets the size of the engine, while off-design is any operational condition which deviates from those conditions, including variations in flight Mach number, altitude, or throttle setting ("part power").  On-design analysis essentially sets the level of thrust production and efficiency that the system is capable of providing, while the off-design analysis determines the variation of those quantities over a range of operating conditions.  The ultimate system fuel burn which results is actually a function of both on-design and off-design analysis, since the mission analysis which is typical requires performance over a wide variety of flight conditions.  It is thus necessary to consider both modes of operation, but we will begin, perhaps logically, with the subject of engine on-design analysis.
 
-\section{On Design Analysis with BLI}
+\subsection{On Design Analysis with BLI}
 
-\subsection{Power Balance and Propulsive Efficiency}
 Engine on-design cycle analysis is the standard term for thermodynamic analysis which determines the size, mass flow (therefore thrust capability), and efficiency of an engine.  The engine design process usually begins with this type of analysis, however the final selection of the design is usually determined by off-design performance (to be discussed later) over the entire aircraft mission during the cycle selection process INSERT REFERENCE HERE.  This analysis is often carried out at a single design point in the simplest case, though it is difficult to often determine the proper design point where a significant portion of cycle choices at that point will yield feasible off-design performance.  Schutte INSERT REFERENCE HERE showed how modern cycle analysis tools and techniques can be used to implement a multi-design point approach (MDP), the purpose of which is to "ensure the feasbility of all cycle designs for a particular application".  This principle ought to -- and, in fact, does -- apply in the case of BLI, however the theoretical and academic work which implements BLI on-design analysis has largely ignored the issue of off-design performance and proceeds with determining performance differences at a nominal cruise point.  For BLI systems, especially those applied to the HWB aircraft concept, the typical flight condition assumed for the analysis is in excess of Mach 0.7, though typically closer to a 0.8-0.85 range.  The usual design point in these studies is a "top of climb" -- or maximum mass flow -- condition where corrected thrust required is largest.
 
 The process for assessing the benefit of BLI at the design point chosen typically comes down to finding some means of translating the impact of the ingestion of the boundary layer on the propulsive efficiency.  The two equations shown below from Smith and Plas exhibit this mode of thinking about the problem.  Both equations represent the propulsive efficiency of a BLI ingesting propulsor in terms of some measure of the level of boundary layer ingested ( D/T for Smith, $\beta$ for Plas) and in terms of parameters describing the character of the wake or boundary layer being ingested.  The equations are slightly different since Smith and Plas are analyzing different conceptual configurations and propulsor designs and because of modeling assumptions.  However, the core objective remains the same:  to describe the benefit gained from BLI as a function of the amount of wake ingested and boundary layer parameters.  Fundamentally, the results from this analysis are similar:  ingesting more boundary layer provides a bigger benefit.  Other methods of analysis have been used, which involve translating the boundary layer velocity profile into an equivalent "ram drag" reduction -- sometimes called the "ram drag approach" -- and has yielded similar results.  None of these approaches are specific to engine on-design, as they could in principle be used to quantify off-design performance benefit as well, but they are typically applied at the engine design point in the sizing and cycle design analysis.
@@ -734,13 +697,26 @@ The variable "b" here is a term representing the "span" of the ingested boundary
 }
 \vspace{5mm}
 
+\subsection{Off-Design Analysis}
+\subsection{Hypothesis 1}
 
-\section{Off-Design Analysis}
+\subsection{Stall Margin and Stall Constraint}
+\subsection{Hypothesis 2}
 
-\section{Stall Margin and Stall Constraint}
+\section{Architecture Integration Phase}
+\subsection{Integration Issues and Observations}
+\subsection{Hypothesis 3}
+\subsection{Design Possibilities}
+\subsection{Hypothesis 4}
 
+\section{Vehicle Matching Phase}
+\subsection{General Criteria for BLI Sizing Condition}
+\subsection{Hypothesis 5}
+
+\chapter{BLI Modeling Phase}
 
 \section{Baseline Design}
+\subsection{Baseline Thrust Requirements}
 \section{BLI Modeling}
 \subsection{Airframe Model}
 \subsection{Power Balance and Drag Book-keeping}
@@ -748,23 +724,17 @@ The variable "b" here is a term representing the "span" of the ingested boundary
 \subsection{PC Model}
 \subsubsection{General Model Architecture and Algorithm}
 
-\section{"On-Design" Experimental Results}
+\section{Experiment 1 Results}
+
+\subsection{Flight Condition Variation}
 
 \subsection{Design Space Variation}
-
-\subsection{Influence of Distortion Sector Angle}
 
 \subsection{Influence of Inlet Aperture Shape}
 
 \subsection{Influence of Engine Number}
 
-\subsection{A Note on the "Ram-Drag" Approach}
-
-\section{"Off-Design" Experimental Results}
-
 \subsection{Mass Flow Variation}
-
-\subsection{Flight Condition Variation}
 
 \subsection{Influence of the pre-entry zone}
 
@@ -772,11 +742,19 @@ The variable "b" here is a term representing the "span" of the ingested boundary
 
 \chapter{Architecture Integration Phase}
 
-\chapter{Mission Analysis Phase}
+\section{Implementation of Methodology on HWB Vehicle}
+\section{Wake Correction Method}
+\section{Experiment 3 Results}
+\section{Experiment 4 Results}
 
-\chapter{Design Selection Phase}
+\chapter{Vehicle Matching Phase}
+\section{Methodology for Flight Condition Determination}
+\section{Initial MDP Setup}
+\subsection{Effect of BLI On MDP Results}
+\section{Methodology Implementation on Baseline Vehicle}
+\section{Experiment 5 Results}
 
-\chapter{  Summary of Contributions}
+\chapter{Summary and Conclusions}
 
 
 \nocite{*}
