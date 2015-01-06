@@ -1,0 +1,98 @@
+\documentclass[12pt]{gatech-thesis}
+
+\usepackage{amsmath,amssymb,latexsym,float,epsfig,subfigure}
+
+\title{A Sizing and Vehicle Matching Methodology for Boundary Layer Ingesting Propulsion Systems} %% If you want to specify a linebreak
+                               %% in the thesis title, you MUST use
+                               %% \protect\\ instead of \\, as \\ is a
+                               %% fragile command that \MakeUpperCase
+                               %% will break!
+\author{Jonathan C. Gladin}
+\department{School of Aerospace Engineering}
+
+
+\principaladvisor{Professor Dimitri Mavris}
+\committeechair{Professor Dimitri Mavris}
+\firstreader{Dr. Brian Kestner}
+\secondreader{Dr. Brian German}
+%\setcounter{secnumdepth}{2}
+\degree{Doctor of Philosophy}
+
+%% Set \listmajortrue below, then uncomment and set this for
+%% interdisciplinary PhD programs so that the title page says
+%% ``[degree] in [major]'' and puts the department at the bottom of
+%% the page, rather than saying ``[degree] in the [department]''
+
+%% \major{Algorithms, Combinatorics, and Optimization} 
+
+\copyrightyear{2015}
+\submitdate{August 2015} % Must be the month and year of graduation,
+                         % not thesis approval! As of 2010, this means
+                         % this text must be May, August, or December
+                         % followed by the year.
+
+%% The date the last committee member signs the thesis form. Printed
+%% on the approval page.
+\approveddate{~~}
+
+\bibfiles{Gladin-thesis}
+\graphicspath{{../img/}}
+%% The following are the defaults
+%%    \titlepagetrue
+%%    \signaturepagetrue
+%%    \copyrightfalse
+%%    \figurespagetrue
+%%    \tablespagetrue
+%%    \contentspagetrue
+%%    \dedicationheadingfalse
+%%    \bibpagetrue
+%%    \thesisproposalfalse
+%%    \strictmarginstrue
+%%    \dissertationfalse
+%%    \listmajorfalse
+%%    \multivolumefalse
+
+\begin{document}
+	
+	\bibliographystyle{gatech-thesis}
+	
+	\begin{preliminary}
+	
+		\input{../tex/dedication.tex}
+
+		\input{../tex/abstract.tex}
+
+		\input{../tex/preface.tex}
+	
+		\input{../tex/acknowledgements.tex}
+
+		\contents
+		
+		\input{../tex/summary.tex}
+
+	\end{preliminary}
+
+	\input{../tex/chapter1.tex}
+
+	\input{../tex/chapter2.tex}	
+
+	\input{../tex/chapter3.tex}	
+
+	\input{../tex/chapter4.tex}
+
+	\input{../tex/chapter5.tex}
+
+	\input{../tex/chapter6.tex}
+
+	\input{../tex/chapter7.tex}
+
+\nocite{*}
+%% We need this since this file doesn't ACTUALLY \cite anything...
+%%
+ 
+\begin{postliminary}
+\references
+\end{postliminary}
+
+
+\end{document}
