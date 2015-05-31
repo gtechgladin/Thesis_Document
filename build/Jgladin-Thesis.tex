@@ -1,6 +1,15 @@
 \documentclass[12pt]{gatech-thesis}
 
-\usepackage{amsmath,amssymb,latexsym,float,epsfig,subfigure, epstopdf}
+\usepackage{amsmath,amssymb,latexsym,float,epsfig, epstopdf, lettrine, titlesec, booktabs, multirow, subcaption, tikz, enumitem}
+\usepackage[font = {small}]{caption}
+\usepackage{array, booktabs}% http://ctan.org/pkg/array
+\newcolumntype{P}[1]{>{\centering}p{#1}}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{%
+		\node[shape=circle,fill=blue!20,draw,inner sep=2pt] (char) {#1};}}
+
+\titleformat{\section}[hang]{\normalfont\fontsize{18}{15}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}[hang]{\normalfont\fontsize{15}{15}\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[hang]{\normalfont\bfseries}{\thesubsubsection}{1em}{\hspace{-20pt}}
 
 \title{A Sizing and Vehicle Matching Methodology for Boundary Layer Ingesting Propulsion Systems} %% If you want to specify a linebreak
                                %% in the thesis title, you MUST use
@@ -23,7 +32,7 @@
 %% ``[degree] in [major]'' and puts the department at the bottom of
 %% the page, rather than saying ``[degree] in the [department]''
 
-%% \major{Algorithms, Combinatorics, and Optimization} 
+\major{Aerospace Engineering} 
 
 \copyrightyear{2015}
 \submitdate{August 2015} % Must be the month and year of graduation,
@@ -35,7 +44,7 @@
 %% on the approval page.
 \approveddate{~~}
 
-\bibfiles{Gladin-thesis}
+\bibfiles{Jgladin-Thesis.bib}
 \graphicspath{{../img/}}
 %% The following are the defaults
 %%    \titlepagetrue
@@ -51,6 +60,8 @@
 %%    \dissertationfalse
 %%    \listmajorfalse
 %%    \multivolumefalse
+
+\usepackage{amsmath, esint}
 
 \begin{document}
 	
@@ -86,6 +97,7 @@
 
 	\input{../tex/chapter7.tex}
 
+	\input{../tex/chapter8.tex}
 \nocite{*}
 %% We need this since this file doesn't ACTUALLY \cite anything...
 %%
